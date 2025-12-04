@@ -1,6 +1,5 @@
 plugins {
     idea
-    `java-library`
     `maven-publish`
     id("hytale-plugin")
 }
