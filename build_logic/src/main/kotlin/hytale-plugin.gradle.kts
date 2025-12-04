@@ -4,7 +4,6 @@ import org.jetbrains.gradle.ext.settings
 import org.jetbrains.gradle.ext.taskTriggers
 
 plugins {
-    application
     `java-library`
     id("org.jetbrains.gradle.plugin.idea-ext")
 }
