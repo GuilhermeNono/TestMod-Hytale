@@ -1,4 +1,3 @@
-
 import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.kotlin.dsl.getByName
 import org.gradle.plugins.ide.idea.model.IdeaModel

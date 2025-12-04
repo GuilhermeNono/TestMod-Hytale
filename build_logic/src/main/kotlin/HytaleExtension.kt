@@ -1,4 +1,3 @@
-
 import net.harawata.appdirs.AppDirs
 import net.harawata.appdirs.AppDirsFactory
 import org.gradle.api.Project

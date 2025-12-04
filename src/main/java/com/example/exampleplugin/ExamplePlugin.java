@@ -10,6 +10,6 @@ public class ExamplePlugin extends JavaPlugin {
 
     public ExamplePlugin(JavaPluginInit init) {
         super(init);
-        LOGGER.atInfo().log("Hello from %s version %s",  this.getName(), this.getManifest().getVersion().toString());
+        LOGGER.atInfo().log("Hello from %s version %s", this.getName(), this.getManifest().getVersion().toString());
     }
 }
