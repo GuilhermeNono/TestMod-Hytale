@@ -58,6 +58,17 @@ sourceSets.main.configure {
     resources.srcDir(generateMetadataFile)
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Specification-Title"] = rootProject.name
+        attributes["Specification-Version"] = version
+        attributes["Implementation-Title"] = project.name
+        attributes["Implementation-Version"] =
+            providers.environmentVariable("COMMIT_SHA_SHORT")
+                .map { "${version}-${it}" }
+                .getOrElse(version.toString())
+    }
+}
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
     module {
