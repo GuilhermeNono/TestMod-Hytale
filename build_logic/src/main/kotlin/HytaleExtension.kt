@@ -54,6 +54,13 @@ abstract class HytaleExtension @Inject constructor(factory: ProviderFactory, pri
     @get:Input
     abstract val disableFileWatcher: Property<Boolean>
 
+    //TODO make enum
+    /**
+     * authenticated|offline|insecure
+     */
+    @get:Input
+    abstract val authMode: Property<String>
+
     @get:Input
     abstract val programArgs: ListProperty<String>
 
@@ -83,5 +90,6 @@ abstract class HytaleExtension @Inject constructor(factory: ProviderFactory, pri
         allowOp.convention(true)
         disableSentry.convention(true)
         disableFileWatcher.convention(false)
+        authMode.convention("insecure")
     }
 }

@@ -44,6 +44,10 @@ project.afterEvaluate {
         programArgs.add("--disable-file-watcher")
     }
 
+    hytaleExtension.authMode.orNull?.let {
+        programArgs.add("--auth-mode=${it}")
+    }
+
     hytaleExtension.programArgs.orNull?.let { programArgs.addAll(it) }
 
     val aotFile = project.file("${hytaleExtension.serverDir.get()}/HytaleServer.aot")
