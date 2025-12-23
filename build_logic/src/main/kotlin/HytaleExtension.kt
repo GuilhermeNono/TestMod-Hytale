@@ -30,9 +30,6 @@ abstract class HytaleExtension @Inject constructor(factory: ProviderFactory, pri
     @get:InputDirectory
     abstract val hytaleUserDir: Property<String>
 
-    @get:InputDirectory
-    abstract val packsDir: Property<String>
-
     @get:Input
     abstract val updateChannel: Property<String>
 
@@ -74,7 +71,6 @@ abstract class HytaleExtension @Inject constructor(factory: ProviderFactory, pri
         assetsDir.convention(factory.provider { "${gameDir.get()}/install/${updateChannel.get()}/package/game/latest/Assets.zip" })
         serverDir.convention(factory.provider { "${gameDir.get()}/install/${updateChannel.get()}/package/game/latest/Server" })
         hytaleUserDir.convention(factory.provider { "${gameDir.get()}/UserData" })
-        packsDir.convention(factory.provider { "${hytaleUserDir.get()}/Packs" })
 
         runConfigName.convention(factory.provider {
             var name = "HytaleServer"

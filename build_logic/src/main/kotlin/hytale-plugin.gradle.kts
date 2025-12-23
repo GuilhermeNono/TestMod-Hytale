@@ -28,8 +28,7 @@ project.afterEvaluate {
 
     // TODO make server properties configurable
     val programArgs = mutableListOf(
-        "--assets=${hytaleExtension.assetsDir.get()}",
-        "--packs=${hytaleExtension.packsDir.get()}"
+        "--assets=${hytaleExtension.assetsDir.get()}"
     )
 
     if(hytaleExtension.allowOp.get()) {
