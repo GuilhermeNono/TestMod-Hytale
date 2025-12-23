@@ -52,7 +52,9 @@ project.afterEvaluate {
     val aotFile = project.file("${hytaleExtension.serverDir.get()}/HytaleServer.aot")
     val aotArg = if (aotFile.exists()) "-XX:AOTCache=${aotFile.absolutePath}" else ""
 
-    val javaArgs = listOf(aotArg)
+    val javaArgs = mutableListOf(aotArg)
+    hytaleExtension.jvmArgs.orNull?.let { javaArgs.addAll(it) }
+    javaArgs.add("--enable-native-access=ALL-UNNAMED")
 
     // FIXME IDEA bug: need to somehow get the run configs to *run* with the project's JDK not the root project's JDK version.
 //    val projectModuleName = if (project == rootProject) {

@@ -61,6 +61,9 @@ abstract class HytaleExtension @Inject constructor(factory: ProviderFactory, pri
     @get:Input
     abstract val programArgs: ListProperty<String>
 
+    @get:Input
+    abstract val jvmArgs: ListProperty<String>
+
     init {
         updateChannel.convention(defaultUpdateChannel)
 
