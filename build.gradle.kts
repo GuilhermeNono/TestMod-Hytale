@@ -24,7 +24,7 @@ java {
     withSourcesJar()
 }
 
-val generateMetadataFile = tasks.register("generateMetadataFile", ProcessResources::class) {
+tasks.named<ProcessResources>("processResources") {
     var replaceProperties = mapOf(
         "plugin_group" to findProperty("plugin_group"),
         "plugin_maven_group" to project.group,
@@ -39,24 +39,15 @@ val generateMetadataFile = tasks.register("generateMetadataFile", ProcessResourc
         "plugin_author" to findProperty("plugin_author")
     )
 
-    val inputDir = "src/main/templates"
-    val outputDir = "build/generated/sources/customMetadata"
+    filesMatching("manifest.json") {
+        expand(replaceProperties)
+    }
 
     inputs.properties(replaceProperties)
-    inputs.dir(inputDir)
-    outputs.dir(outputDir)
-
-    expand(replaceProperties)
-    from(inputDir)
-    into(outputDir)
 }
 
 hytale {
-    syncTask = generateMetadataFile
-}
 
-sourceSets.main.configure {
-    resources.srcDir(generateMetadataFile)
 }
 
 tasks.withType<Jar> {
