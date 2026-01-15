@@ -1,6 +1,8 @@
 package com.example.exampleplugin;
 
+import com.example.exampleplugin.events.ExampleEvent;
 import com.hypixel.hytale.logger.HytaleLogger;
+import com.hypixel.hytale.server.core.event.events.player.PlayerReadyEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
@@ -11,5 +13,10 @@ public class ExamplePlugin extends JavaPlugin {
     public ExamplePlugin(JavaPluginInit init) {
         super(init);
         LOGGER.atInfo().log("Hello from %s version %s", this.getName(), this.getManifest().getVersion().toString());
+    }
+
+    @Override
+    protected void setup() {
+        this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, ExampleEvent::onPlayerReady);
     }
 }
