@@ -1,7 +1,9 @@
 package com.example.exampleplugin;
 
 import com.example.exampleplugin.events.ExampleEvent;
+import com.example.exampleplugin.events.NewBlockBehaviour;
 import com.hypixel.hytale.logger.HytaleLogger;
+import com.hypixel.hytale.server.core.event.events.player.PlayerMouseButtonEvent;
 import com.hypixel.hytale.server.core.event.events.player.PlayerReadyEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
@@ -17,6 +19,10 @@ public class ExamplePlugin extends JavaPlugin {
 
     @Override
     protected void setup() {
-        this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, ExampleEvent::onPlayerReady);
+        this.getEventRegistry()
+                .registerGlobal(PlayerReadyEvent.class, ExampleEvent::onPlayerReady);
+
+        this.getEventRegistry()
+                .registerGlobal(PlayerMouseButtonEvent.class, NewBlockBehaviour::onHit);
     }
 }
